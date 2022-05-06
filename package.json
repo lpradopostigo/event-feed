@@ -1,19 +1,28 @@
 {
-  "name": "weather-app",
+  "name": "event-feed",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate": "knex migrate:latest --knexfile database/knexfile.js",
+    "seed": "knex seed:run --knexfile database/knexfile.js"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "antd": "^4.20.2",
+    "knex": "^2.0.0",
+    "mysql2": "^2.3.3",
     "next": "12.1.5",
+    "next-with-less": "^2.0.5",
+    "prettier": "^2.6.2",
     "react": "18.1.0",
     "react-dom": "18.1.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^6.3.1",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5"
   }
