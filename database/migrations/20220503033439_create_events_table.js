@@ -7,7 +7,8 @@ exports.up = function (knex) {
     table.increments("id").primary();
     table.string("title").notNullable();
     table.text("description");
-    table.datetime("date").notNullable();
+    table.datetime("start_date").notNullable();
+    table.datetime("end_date").notNullable();
     table.timestamps(false, true);
   });
 };

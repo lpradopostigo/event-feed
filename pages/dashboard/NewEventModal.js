@@ -45,6 +45,7 @@ export default function NewEventModal({ visible, onCreate, onCancel }) {
           <DatePicker
             showTime={{
               format: "HH:mm",
+              minuteStep: 5,
             }}
             format="YYYY-MM-DD HH:mm"
           />

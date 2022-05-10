@@ -34,7 +34,12 @@ export default function Dashboard() {
   useEffect(() => {
     (async () => {
       const { body } = await get("/api/events");
-      setEvents(body);
+      const events = body.map(({ start_date, end_date, ...rest }) => ({
+        ...rest,
+        startDate: start_date,
+        endDate: end_date,
+      }));
+      setEvents(events);
     })();
   }, []);
 

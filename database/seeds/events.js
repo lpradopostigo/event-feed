@@ -1,5 +1,4 @@
 const { faker } = require("@faker-js/faker");
-
 function dateToDatetime(date) {
   return date.toISOString().replace("Z", "").replace("T", " ");
 }
@@ -10,16 +9,17 @@ function dateToDatetime(date) {
  */
 exports.seed = async function (knex) {
   await knex("events").del();
-  await knex("events").insert(
-    [...Array(5).keys()].map(() => ({
+
+  const events = [...Array(10).keys()].map(() => {
+    const startDate = faker.date.soon(15);
+    const endDate = faker.date.soon(1, startDate);
+    return {
       title: faker.company.bs(),
       description: faker.lorem.paragraph(5),
-      date: dateToDatetime(
-        faker.date.between(
-          "2022-04-01T00:00:00.000Z",
-          "2022-08-00T00:00:00.000Z"
-        )
-      ),
-    }))
-  );
+      start_date: dateToDatetime(startDate),
+      end_date: dateToDatetime(endDate),
+    };
+  });
+
+  await knex("events").insert(events);
 };
